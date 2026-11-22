@@ -1,3 +1,5 @@
+import { store } from '../../store';
+import { clearSession } from '../../store/slices/authSlice';
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
@@ -94,7 +96,7 @@ export function WorkspaceSidebar({ role, isOpen = false, onClose }) {
     )
     .sort((a, b) => b[1].length - a[1].length)[0]?.[1];
   function logout() {
-    [
+    store.dispatch(clearSession([
       'nexuspay_auth_token',
       'nexuspay_student_token',
       'auth_token',
@@ -102,7 +104,7 @@ export function WorkspaceSidebar({ role, isOpen = false, onClose }) {
       'user_role',
       'user_id',
       'nexuspay_user_id',
-    ].forEach((k) => localStorage.removeItem(k));
+    ]));
     navigate(`/signin?role=${role}`);
   }
   return (

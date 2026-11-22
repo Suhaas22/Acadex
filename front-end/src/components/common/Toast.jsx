@@ -1,23 +1,26 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
+import React, { createContext, useContext, useCallback } from 'react';
 import { CheckCircle2, AlertCircle, Info, X } from 'lucide-react';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { added, removed } from '../../store/slices/toastSlice';
 
 const ToastContext = createContext(null);
 
 export function ToastProvider({ children }) {
-  const [toasts, setToasts] = useState([]);
+  const toasts = useAppSelector((state) => state.toast);
+  const dispatch = useAppDispatch();
 
   const addToast = useCallback((message, type = 'success', duration = 3000) => {
     const id = Date.now() + Math.random();
-    setToasts((prev) => [...prev, { id, message, type }]);
+    dispatch(added({ id, message, type }));
 
     setTimeout(() => {
-      setToasts((prev) => prev.filter((t) => t.id !== id));
+      dispatch(removed(id));
     }, duration);
-  }, []);
+  }, [dispatch]);
 
   const removeToast = useCallback((id) => {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
-  }, []);
+    dispatch(removed(id));
+  }, [dispatch]);
 
   return (
     <ToastContext.Provider value={{ addToast }}>

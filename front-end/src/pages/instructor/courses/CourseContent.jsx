@@ -1,3 +1,5 @@
+import { subscribeToStoreEvents } from '../../../store/listeners';
+import { useServerRecord } from '../../../hooks/useServerRecord';
 import { durationMinutes, formatDuration } from '../../../utils/duration';
 import '../../../styles/curriculum-controls.css';
 import { useState, useRef, useEffect } from 'react';
@@ -956,7 +958,7 @@ function ModuleCard({
 export function CourseContent() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [course, setCourse] = useState(null);
+  const [course, setCourse] = useServerRecord('instructor.courseContent.course', null);
   const [expandedModules, setExpandedModules] = useState([1]);
   const [confirmDelete, setConfirmDelete] = useState(null);
   const [uploadModalItem, setUploadModalItem] = useState(null);
@@ -965,18 +967,13 @@ export function CourseContent() {
   const [saving, setSaving] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [savedMessage, setSavedMessage] = useState('');
-  const [pending, setPending] = useState(null);
+  const [pending, setPending] = useServerRecord('instructor.courseContent.pending', null);
   const [saveError, setSaveError] = useState('');
   const dirty = useRef(false);
   const [revision, setRevision] = useState(0);
   useEffect(() => {
     const refresh = () => setRevision((r) => r + 1);
-    window.addEventListener('focus', refresh);
-    window.addEventListener('learning-data-changed', refresh);
-    return () => {
-      window.removeEventListener('focus', refresh);
-      window.removeEventListener('learning-data-changed', refresh);
-    };
+    return subscribeToStoreEvents(['focus', 'learning-data-changed'], refresh);
   }, []);
 
   useEffect(() => {

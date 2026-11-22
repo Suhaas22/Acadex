@@ -15,10 +15,12 @@ import {
   RefreshCw,
   Send,
 } from 'lucide-react';
-import { api } from '../services/api';
+import { useAppDispatch } from '../store/hooks';
+import { requestPasswordReset, resetPassword } from '../store/slices/authSlice';
 import { Brand, LearningVisual } from '../components/brand/Brand';
 
 export default function ForgotPassword() {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -55,7 +57,7 @@ export default function ForgotPassword() {
     setError('');
 
     try {
-      const result = await api.auth.requestPasswordReset(email.trim());
+      const result = await dispatch(requestPasswordReset(email.trim()));
       setLoading(false);
       setStep(2);
       setSuccessMsg(
@@ -112,11 +114,7 @@ export default function ForgotPassword() {
     setError('');
 
     try {
-      const result = await api.auth.resetPassword(
-        email.trim(),
-        otp.join(''),
-        newPassword
-      );
+      const result = await dispatch(resetPassword(email.trim(), otp.join(''), newPassword));
       setLoading(false);
       setStep(4);
       setSuccessMsg(

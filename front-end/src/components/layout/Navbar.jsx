@@ -1,3 +1,6 @@
+import { useServerRecord } from '../../hooks/useServerRecord';
+import { store } from '../../store';
+import { clearSession } from '../../store/slices/authSlice';
 import { WorkspaceSidebar } from '../workspace/WorkspaceSidebar';
 import NotificationBell from '../workspace/NotificationBell';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
@@ -83,7 +86,7 @@ function isItemActive(item, pathname) {
 }
 
 export function signOutStudent(navigate) {
-  [
+  store.dispatch(clearSession([
     'auth_token',
     'nexuspay_auth_token',
     'nexuspay_student_token',
@@ -93,7 +96,7 @@ export function signOutStudent(navigate) {
     'nexuspay_active_role',
     'user_name',
     'user_email',
-  ].forEach((k) => localStorage.removeItem(k));
+  ]));
   navigate('/signin?role=Student');
 }
 
@@ -106,7 +109,7 @@ export default function StudentTopbar({ onMenuClick }) {
   const location = useLocation();
   const { student } = useStudent();
   const [query, setQuery] = useState('');
-  const [catalog, setCatalog] = useState([]);
+  const [catalog, setCatalog] = useServerRecord('student.search.catalog', []);
   const [showResults, setShowResults] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const searchRef = useRef(null);

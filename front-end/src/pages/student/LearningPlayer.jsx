@@ -1,3 +1,4 @@
+import { useServerRecord } from '../../hooks/useServerRecord';
 import { formatDuration } from '../../utils/duration';
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -27,12 +28,12 @@ export default function LearningPlayer() {
   const { refreshData } = useStudent();
   const videoRef = useRef(null);
 
-  const [assessment, setAssessment] = useState(null);
-  const [lessons, setLessons] = useState([]);
+  const [assessment, setAssessment] = useServerRecord('student.player.assessment', null);
+  const [lessons, setLessons] = useServerRecord('student.player.lessons', []);
   const [loadError, setLoadError] = useState('');
   const [revision, setRevision] = useState(0);
-  const [course, setCourse] = useState(null);
-  const [enrollment, setEnrollment] = useState(null);
+  const [course, setCourse] = useServerRecord('student.player.course', null);
+  const [enrollment, setEnrollment] = useServerRecord('student.player.enrollment', null);
   const [loading, setLoading] = useState(true);
   const [notEnrolled, setNotEnrolled] = useState(false);
   const [currentId, setCurrentId] = useState(null);

@@ -1,3 +1,4 @@
+import { subscribeToStoreEvents } from '../../store/listeners';
 import { timestampLabel } from '../../utils/adminDisplay';
 import { Link, useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
@@ -9,12 +10,10 @@ export function useInbox() {
   useEffect(() => {
     const refresh = () => state.refresh();
     const tick = setInterval(refresh, 30000);
-    window.addEventListener('notifications-changed', refresh);
-    window.addEventListener('focus', refresh);
+    const unsubscribe = subscribeToStoreEvents(['notifications-changed', 'focus'], refresh);
     return () => {
       clearInterval(tick);
-      window.removeEventListener('notifications-changed', refresh);
-      window.removeEventListener('focus', refresh);
+      unsubscribe();
     };
   }, [state.refresh]);
   return state;

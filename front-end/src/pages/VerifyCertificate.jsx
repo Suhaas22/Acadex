@@ -1,3 +1,4 @@
+import { useServerRecord } from '../hooks/useServerRecord';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { api } from '../services/api';
@@ -5,7 +6,7 @@ import '../styles/admin-panels.css';
 
 export default function VerifyCertificate() {
   const { credentialId } = useParams();
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useServerRecord('public.certificate.result', null);
   const [error, setError] = useState('');
   useEffect(() => {
     let live = true;
@@ -22,7 +23,7 @@ export default function VerifyCertificate() {
     return () => {
       live = false;
     };
-  }, [credentialId]);
+  }, [credentialId, setResult]);
   const certificate = result?.certificate;
   return (
     <main className="min-h-screen grid place-items-center bg-slate-50 p-6">

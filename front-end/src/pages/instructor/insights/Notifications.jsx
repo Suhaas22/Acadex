@@ -1,3 +1,4 @@
+import { useServerRecord } from '../../../hooks/useServerRecord';
 import { dateLabel } from '../../../utils/adminDisplay';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -32,7 +33,7 @@ export function Notifications() {
   const navigate = useNavigate();
   const { instructor } = useInstructor();
   const [activeTab, setActiveTab] = useState('all');
-  const [notifications, setNotifications] = useState([]);
+  const [notifications, setNotifications] = useServerRecord('instructor.notifications.notifications', []);
   const [loading, setLoading] = useState(true);
 
   const fetchNotifications = () => {

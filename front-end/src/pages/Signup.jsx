@@ -1,3 +1,5 @@
+import { useAppDispatch } from '../store/hooks';
+import { storeSession, register } from '../store/slices/authSlice';
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
@@ -11,7 +13,6 @@ import {
   Layers,
 } from 'lucide-react';
 import AuthLayout from '../components/auth/AuthLayout';
-import { api } from '../services/api';
 const roles = [
   ['Student', 'Learner', GraduationCap],
   ['Instructor', 'Instructor', BookOpen],
@@ -35,6 +36,7 @@ function roleFrom(value) {
   );
 }
 export default function Signup() {
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const role = roleFrom(
@@ -77,7 +79,7 @@ export default function Signup() {
     setBusy(true);
     setError('');
     try {
-      const result = await api.auth.register({
+      const result = await dispatch(register({
         name: form.name.trim(),
         email: form.email.trim().toLowerCase(),
         password: form.password,
@@ -88,7 +90,7 @@ export default function Signup() {
         ...(role === 'Instructor' && form.expertise.trim()
           ? { expertise: form.expertise.trim() }
           : {}),
-      });
+      }));
       if (result?.pendingVerification) {
         setNotice(result.message);
         setForm({ ...form, password: '' });
@@ -97,7 +99,7 @@ export default function Signup() {
       if (!result?.token || !result.user?.id)
         throw new Error('The server did not return a valid account.');
       const u = result.user;
-      for (const [key, value] of Object.entries({
+      dispatch(storeSession({
         nexuspay_auth_token: result.token,
         auth_token: result.token,
         user_id: u.id,
@@ -110,8 +112,7 @@ export default function Signup() {
         user_organization_id: u.organizationId || '',
         user_organization_name: u.organizationName || '',
         nexuspay_instructor_id: u.instructorId || '',
-      }))
-        localStorage.setItem(key, String(value ?? ''));
+      }, true));
       navigate(
         {
           Student: '/student/dashboard',

@@ -1,3 +1,4 @@
+import { useServerRecord } from '../../hooks/useServerRecord';
 import { formatDuration } from '../../utils/duration';
 import { dateLabel } from '../../utils/adminDisplay';
 import { ratingLabel, coursePriceLabel } from '../../utils/adminDisplay';
@@ -59,10 +60,10 @@ export default function CourseDetails() {
 
   const [loadError, setLoadError] = useState('');
   const [revision, setRevision] = useState(0);
-  const [course, setCourse] = useState(null);
+  const [course, setCourse] = useServerRecord('student.courseDetails.course', null);
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState([]);
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useServerRecord('student.courseDetails.reviews', []);
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
   const [editingReviewId, setEditingReviewId] = useState(null);
@@ -115,14 +116,14 @@ export default function CourseDetails() {
           setLoadError(e.message);
           throw e;
         }),
-    [id]
+    [id, setCourse]
   );
   const loadReviews = useCallback(
     () =>
       api.courses
         .getReviews(id)
         .then((r) => setReviews(Array.isArray(r) ? r : [])),
-    [id]
+    [id, setReviews]
   );
 
   useEffect(() => {

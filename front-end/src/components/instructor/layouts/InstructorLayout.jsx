@@ -1,3 +1,6 @@
+import { useServerRecord } from '../../../hooks/useServerRecord';
+import { store } from '../../../store';
+import { clearSession } from '../../../store/slices/authSlice';
 import NotificationBell from '../../workspace/NotificationBell';
 import React, { useState, useRef, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
@@ -26,7 +29,7 @@ import { api } from '../../../utils/api';
 export function InstructorLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
-  const [unreadNotifsCount, setUnreadNotifsCount] = useState(0);
+  const [unreadNotifsCount, setUnreadNotifsCount] = useServerRecord('instructor.sidebar.unreadNotifsCount', 0);
   const dropdownRef = useRef(null);
 
   const { instructor, isAffiliated, loading, error, pendingJoinRequest } =
@@ -73,10 +76,9 @@ export function InstructorLayout() {
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
 
   const handleSignOut = () => {
-    localStorage.removeItem('nexuspay_auth_token');
-    localStorage.removeItem('auth_token');
-    localStorage.removeItem('nexuspay_active_role');
-    localStorage.removeItem('user_role');
+    store.dispatch(clearSession([
+      'nexuspay_auth_token', 'auth_token', 'nexuspay_active_role', 'user_role',
+    ]));
     window.location.href = '/signin?role=Instructor';
   };
 

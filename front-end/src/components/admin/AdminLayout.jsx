@@ -1,3 +1,5 @@
+import { store } from '../../store';
+import { clearSession } from '../../store/slices/authSlice';
 import NotificationBell from '../workspace/NotificationBell';
 import React, { Component, useState, useEffect, useRef } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
@@ -81,12 +83,12 @@ function AdminShell() {
     };
   }, []);
   function logout() {
-    [
+    store.dispatch(clearSession([
       'nexuspay_auth_token',
       'auth_token',
       'nexuspay_active_role',
       'user_role',
-    ].forEach((k) => localStorage.removeItem(k));
+    ]));
     navigate('/signin?role=Admin');
   }
   const title = location.pathname.endsWith('/approval')

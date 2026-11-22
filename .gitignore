@@ -3,8 +3,6 @@ node_modules/
 
 # Build output
 dist/
-dist-test/
-*.tsbuildinfo
 build/
 coverage/
 
@@ -32,7 +30,30 @@ Thumbs.db
 *.temp
 
 # Scripts
-/scripts/*
-!/scripts/dev.mjs
+scripts/
 back-end/scripts/
 front-end/scripts/
+
+# NestJS / TypeScript build outputs
+**/dist/
+**/dist-test/
+**/coverage/
+*.tsbuildinfo
+
+# Dependencies
+**/node_modules/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Runtime logs
+*.log
+
+# Local-only project
+/NexusPay/
+
+# Backend uploaded files
+back-end/uploads/*
+!back-end/uploads/.gitkeep

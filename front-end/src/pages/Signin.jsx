@@ -1,8 +1,9 @@
+import { useAppDispatch } from '../store/hooks';
+import { storeSession, login as signIn } from '../store/slices/authSlice';
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, ArrowRight } from 'lucide-react';
 import AuthLayout from '../components/auth/AuthLayout';
-import { api } from '../services/api';
 const paths = {
   Student: '/student',
   Instructor: '/instructor',
@@ -27,6 +28,7 @@ function normalize(role) {
   );
 }
 export default function SignIn() {
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -40,7 +42,7 @@ export default function SignIn() {
     setBusy(true);
     setError('');
     try {
-      const result = await api.auth.login(email.trim(), password);
+      const result = await dispatch(signIn(email.trim(), password));
       if (!result?.token || !result.user?.id)
         throw new Error('The server did not return a valid account.');
       const user = result.user;
@@ -49,7 +51,7 @@ export default function SignIn() {
         throw new Error(
           'This account has an unsupported workspace. Please contact support.'
         );
-      for (const [key, value] of Object.entries({
+      dispatch(storeSession({
         nexuspay_auth_token: result.token,
         auth_token: result.token,
         user_id: user.id,
@@ -62,8 +64,7 @@ export default function SignIn() {
         user_organization_id: user.organizationId || '',
         user_organization_name: user.organizationName || '',
         nexuspay_instructor_id: user.instructorId || '',
-      }))
-        localStorage.setItem(key, String(value));
+      }));
       const from = location.state?.from;
       const prefix = paths[resolved];
       const destination = from?.pathname?.startsWith(prefix + '/')

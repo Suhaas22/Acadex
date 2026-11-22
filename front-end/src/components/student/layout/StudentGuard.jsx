@@ -1,3 +1,4 @@
+import { useAppSelector } from '../../../store/hooks';
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { StudentProvider } from '../../../context/StudentContext';
@@ -11,11 +12,12 @@ import { StudentProvider } from '../../../context/StudentContext';
  */
 export function StudentGuard({ children }) {
   const location = useLocation();
+  const auth = useAppSelector((state) => state.auth);
 
   const rawToken =
-    localStorage.getItem('nexuspay_auth_token') ||
-    localStorage.getItem('auth_token') ||
-    localStorage.getItem('nexuspay_student_token');
+    auth['nexuspay_auth_token'] ||
+    auth['auth_token'] ||
+    auth['nexuspay_student_token'];
 
   const token =
     rawToken &&

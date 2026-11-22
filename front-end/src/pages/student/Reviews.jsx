@@ -1,3 +1,4 @@
+import { useServerRecord } from '../../hooks/useServerRecord';
 import { dateLabel } from '../../utils/adminDisplay';
 import SearchableSelect from '../../components/common/SearchableSelect';
 import { AdminHeader } from '../../components/admin/AdminUI';
@@ -76,7 +77,7 @@ export default function StudentReviews() {
   const { addToast } = useToast();
 
   const [loadError, setLoadError] = useState('');
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useServerRecord('student.reviews.reviews', []);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [search, setSearch] = useState('');

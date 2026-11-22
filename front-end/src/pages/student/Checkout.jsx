@@ -1,3 +1,4 @@
+import { useServerRecord } from '../../hooks/useServerRecord';
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, Link, Navigate } from 'react-router-dom';
 import { CreditCard, Lock, ChevronRight, Smartphone } from 'lucide-react';
@@ -46,7 +47,7 @@ export default function Checkout() {
   const { addToast } = useToast();
   const { enrollments, refreshData } = useStudent();
 
-  const [course, setCourse] = useState(null);
+  const [course, setCourse] = useServerRecord('student.checkout.course', null);
   const [loading, setLoading] = useState(true);
   const [method, setMethod] = useState('card');
   const [card, setCard] = useState({
@@ -67,7 +68,7 @@ export default function Checkout() {
       .then(setCourse)
       .catch(() => setCourse(null))
       .finally(() => setLoading(false));
-  }, [courseId]);
+  }, [courseId, setCourse]);
 
   useEffect(() => {
     document.title = 'Checkout | Acadex';

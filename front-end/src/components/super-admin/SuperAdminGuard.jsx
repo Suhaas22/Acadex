@@ -1,3 +1,4 @@
+import { useAppSelector } from '../../store/hooks';
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
@@ -8,13 +9,14 @@ import { Navigate, useLocation } from 'react-router-dom';
  */
 export function SuperAdminGuard({ children }) {
   const location = useLocation();
+  const auth = useAppSelector((state) => state.auth);
 
   const token =
-    localStorage.getItem('nexuspay_auth_token') ||
-    localStorage.getItem('auth_token');
+    auth['nexuspay_auth_token'] ||
+    auth['auth_token'];
   const role =
-    localStorage.getItem('nexuspay_active_role') ||
-    localStorage.getItem('user_role');
+    auth['nexuspay_active_role'] ||
+    auth['user_role'];
   const normalizedRole = String(role || '')
     .trim()
     .toLowerCase()
