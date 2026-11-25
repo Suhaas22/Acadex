@@ -9,11 +9,11 @@ import {
   Building2,
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { changePassword } from '../../store/slices/authSlice';
+import { changePassword } from '../../store/actions/authActions';
 import {
   fetchWorkspaceAccount,
   updateWorkspaceAccount,
-} from '../../store/slices/usersSlice';
+} from '../../store/actions/usersActions';
 import { AdminHeader, AdminDataState } from '../admin/AdminUI';
 import { InboxPanel } from './NotificationBell';
 import { dateLabel } from '../../utils/adminDisplay';

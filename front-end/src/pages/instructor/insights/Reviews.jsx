@@ -7,7 +7,7 @@ import {
   deleteReviewReply,
   fetchInstructorReviews,
   replyToReview,
-} from '../../../store/slices/reviewsSlice';
+} from '../../../store/actions/reviewsActions';
 import {
   AdminHeader,
   AdminMetric,

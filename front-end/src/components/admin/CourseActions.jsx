@@ -7,7 +7,7 @@ import {
   clearCourseErrors,
   deleteAdminCourse,
   updateAdminCourse,
-} from '../../store/slices/coursesSlice';
+} from '../../store/actions/coursesActions';
 export default function CourseActions({ course, onUpdated }) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

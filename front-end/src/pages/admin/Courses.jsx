@@ -8,7 +8,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchAdminCourseQueue } from '../../store/slices/coursesSlice';
+import { fetchAdminCourseQueue } from '../../store/actions/coursesActions';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import {
   AdminHeader,

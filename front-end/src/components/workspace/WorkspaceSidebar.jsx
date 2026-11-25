@@ -20,8 +20,8 @@ import {
   X,
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { clearSession } from '../../store/slices/authSlice';
-import { fetchWorkspaceSession } from '../../store/slices/usersSlice';
+import { clearSession } from '../../store/actions/authActions';
+import { fetchWorkspaceSession } from '../../store/actions/usersActions';
 
 const navigation = {
   Student: [

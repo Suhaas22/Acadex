@@ -19,7 +19,7 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { fetchPublicLanding } from '../store/slices/coursesSlice';
+import { fetchPublicLanding } from '../store/actions/coursesActions';
 import { Brand } from '../components/brand/Brand';
 import '../styles/academy.css';
 const actors = [

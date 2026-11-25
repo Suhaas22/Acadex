@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { clearSession } from '../../store/slices/authSlice';
-import { fetchStudentProfile } from '../../store/slices/learnersSlice';
-import { fetchStudentCatalog } from '../../store/slices/coursesSlice';
+import { clearSession } from '../../store/actions/authActions';
+import { fetchStudentProfile } from '../../store/actions/learnersActions';
+import { fetchStudentCatalog } from '../../store/actions/coursesActions';
 import { WorkspaceSidebar } from '../workspace/WorkspaceSidebar';
 import NotificationBell from '../workspace/NotificationBell';
 import React, { useState, useEffect, useRef, useMemo } from 'react';

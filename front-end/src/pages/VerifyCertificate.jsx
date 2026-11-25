@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
   verifyCertificate,
   clearVerification,
-} from '../store/slices/certificatesSlice';
+} from '../store/actions/certificatesActions';
 import '../styles/admin-panels.css';
 
 export default function VerifyCertificate() {

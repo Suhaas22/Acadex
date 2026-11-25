@@ -15,10 +15,10 @@ import {
 } from 'lucide-react';
 import OrgLayout from '../../components/organization/OrgLayout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { showToast } from '../../store/slices/toastSlice';
-import { fetchOrgProfile } from '../../store/slices/organizationsSlice';
-import { fetchInstructors } from '../../store/slices/instructorsSlice';
-import { createCourse } from '../../store/slices/coursesSlice';
+import { showToast } from '../../store/actions/toastActions';
+import { fetchOrgProfile } from '../../store/actions/organizationsActions';
+import { fetchInstructors } from '../../store/actions/instructorsActions';
+import { createCourse } from '../../store/actions/coursesActions';
 
 export default function CreateCourse() {
   const navigate = useNavigate();

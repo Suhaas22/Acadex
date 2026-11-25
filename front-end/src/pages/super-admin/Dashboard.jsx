@@ -10,7 +10,7 @@ import {
   ShieldAlert,
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchSuperAdminExecutive } from '../../store/slices/analyticsSlice';
+import { fetchSuperAdminExecutive } from '../../store/actions/analyticsActions';
 import {
   AdminHeader,
   AdminMetric,

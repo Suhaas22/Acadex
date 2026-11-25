@@ -14,7 +14,7 @@ import {
   clearSelectedDispute,
   fetchAdminDisputeById,
   fetchAdminDisputes,
-} from '../../store/slices/disputesSlice';
+} from '../../store/actions/disputesActions';
 import {
   AdminHeader,
   AdminMetric,

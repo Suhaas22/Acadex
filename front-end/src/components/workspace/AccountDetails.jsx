@@ -14,7 +14,7 @@ import {
   toggleAccountAccess,
   deleteAccount,
   clearSelectedAccount,
-} from '../../store/slices/usersSlice';
+} from '../../store/actions/usersActions';
 import {
   AdminHeader,
   AdminMetric,

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { fetchInstructorLearnerById } from '../../../store/slices/learnersSlice';
+import { fetchInstructorLearnerById } from '../../../store/actions/learnersActions';
 import { AdminHeader, AdminDataState } from '../../../components/admin/AdminUI';
 import { StatusBadge } from '../../../components/admin/StatusBadge';
 import { dateLabel } from '../../../utils/adminDisplay';

@@ -18,11 +18,11 @@ import {
 } from '../../components/admin/AdminUI';
 import { InboxPanel } from '../../components/workspace/NotificationBell';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { changePassword } from '../../store/slices/authSlice';
+import { changePassword } from '../../store/actions/authActions';
 import {
   fetchStudentProfile,
   updateStudentProfile,
-} from '../../store/slices/learnersSlice';
+} from '../../store/actions/learnersActions';
 import { dateLabel } from '../../utils/adminDisplay';
 export default function Profile() {
   const dispatch = useAppDispatch();

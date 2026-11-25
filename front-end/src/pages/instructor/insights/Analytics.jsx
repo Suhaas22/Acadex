@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Users, BookOpen, CheckCircle2 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { fetchInstructorWorkspace } from '../../../store/slices/instructorsSlice';
+import { fetchInstructorWorkspace } from '../../../store/actions/instructorsActions';
 import {
   AdminHeader,
   AdminMetric,

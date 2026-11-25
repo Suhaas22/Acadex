@@ -8,7 +8,7 @@ import {
   addStudentDisputeComment,
   clearSelectedDispute,
   fetchStudentDisputeById,
-} from '../../store/slices/disputesSlice';
+} from '../../store/actions/disputesActions';
 import { AdminHeader, AdminDataState } from '../../components/admin/AdminUI';
 import { StatusBadge } from '../../components/admin/StatusBadge';
 import { dateLabel } from '../../utils/adminDisplay';

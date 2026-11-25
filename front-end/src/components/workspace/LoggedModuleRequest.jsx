@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchLoggedModuleRequest } from '../../store/slices/curriculumSlice';
+import { fetchLoggedModuleRequest } from '../../store/actions/curriculumActions';
 import { AdminDataState } from '../admin/AdminUI';
 import { StatusBadge } from '../admin/StatusBadge';
 import { timestampLabel } from '../../utils/adminDisplay';

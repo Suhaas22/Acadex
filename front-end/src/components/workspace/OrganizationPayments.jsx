@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { CreditCard, ArrowDownLeft, X } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchOrgPayments } from '../../store/slices/paymentsSlice';
+import { fetchOrgPayments } from '../../store/actions/paymentsActions';
 import { AdminDataState, AdminEmpty } from '../admin/AdminUI';
 import { StatusBadge } from '../admin/StatusBadge';
 import { money, timestampLabel } from '../../utils/adminDisplay';

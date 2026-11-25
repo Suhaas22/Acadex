@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, useParams, useLocation } from 'react-router-dom';
 import OrgLayout from '../organization/OrgLayout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchLogById } from '../../store/slices/analyticsSlice';
+import { fetchLogById } from '../../store/actions/analyticsActions';
 import { AdminHeader, AdminDataState } from '../admin/AdminUI';
 import { StatusBadge } from '../admin/StatusBadge';
 import { money, timestampLabel } from '../../utils/adminDisplay';

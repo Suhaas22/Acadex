@@ -1,5 +1,5 @@
 import { useAppDispatch } from '../store/hooks';
-import { storeSession, login as signIn } from '../store/slices/authSlice';
+import { storeSession, login as signIn } from '../store/actions/authActions';
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, ArrowRight } from 'lucide-react';

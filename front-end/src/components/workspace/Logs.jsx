@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import OrgLayout from '../organization/OrgLayout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchLogs } from '../../store/slices/analyticsSlice';
+import { fetchLogs } from '../../store/actions/analyticsActions';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import {
   AdminHeader,

@@ -18,14 +18,14 @@ import {
 import PageLayout from '../../components/layout/PageLayout';
 import { LinearProgressBar } from '../../components/common/ProgressBar';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { showToast } from '../../store/slices/toastSlice';
+import { showToast } from '../../store/actions/toastActions';
 import {
   fetchLearningContent,
   recordLearningActivity,
   resetPlayer,
   setCurrentLessonId,
   updateLessonProgress,
-} from '../../store/slices/enrollmentsSlice';
+} from '../../store/actions/enrollmentsActions';
 
 export default function LearningPlayer() {
   const { courseId } = useParams();

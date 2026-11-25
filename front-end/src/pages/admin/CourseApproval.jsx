@@ -13,7 +13,7 @@ import {
   clearCourseErrors,
   fetchAdminCourses,
   reviewAdminCourse,
-} from '../../store/slices/coursesSlice';
+} from '../../store/actions/coursesActions';
 import {
   AdminHeader,
   AdminSearch,

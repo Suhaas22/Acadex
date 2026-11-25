@@ -11,13 +11,13 @@ import {
 import OrgLayout from '../../components/organization/OrgLayout';
 import HumanAvatar from '../../components/common/HumanAvatar';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { showToast } from '../../store/slices/toastSlice';
+import { showToast } from '../../store/actions/toastActions';
 import {
   decideJoinRequest,
   fetchAllInstructorRequests,
   fetchIncomingJoinRequests,
   withdrawInvitation,
-} from '../../store/slices/instructorRequestsSlice';
+} from '../../store/actions/instructorRequestsActions';
 
 const isPending = (s) => /pending|sent/i.test(s || '');
 const fmt = (d) =>

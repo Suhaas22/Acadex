@@ -5,7 +5,7 @@ import PageLayout from '../../components/layout/PageLayout';
 import LearningOverview from '../../components/workspace/LearningOverview';
 import PaymentCard from '../../components/student/PaymentCard';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchStudentBilling } from '../../store/slices/paymentsSlice';
+import { fetchStudentBilling } from '../../store/actions/paymentsActions';
 import {
   AdminMetric,
   AdminDataState,

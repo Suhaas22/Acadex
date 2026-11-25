@@ -8,8 +8,8 @@ import {
   clearDisputeError,
   createOrgSupport,
   fetchOrgSupport,
-} from '../../store/slices/disputesSlice';
-import { fetchWorkspaceNotifications } from '../../store/slices/notificationsSlice';
+} from '../../store/actions/disputesActions';
+import { fetchWorkspaceNotifications } from '../../store/actions/notificationsActions';
 import {
   AdminHeader,
   AdminSearch,

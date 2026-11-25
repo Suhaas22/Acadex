@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight, Settings } from 'lucide-react';
 import NotificationBell from '../workspace/NotificationBell';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchWorkspaceSession } from '../../store/slices/usersSlice';
+import { fetchWorkspaceSession } from '../../store/actions/usersActions';
 
 export default function OrgTopNav({ breadcrumbs = [], actions }) {
   const dispatch = useAppDispatch();

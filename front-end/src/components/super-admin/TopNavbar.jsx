@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Menu, Settings } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchWorkspaceSession } from '../../store/slices/usersSlice';
+import { fetchWorkspaceSession } from '../../store/actions/usersActions';
 import NotificationBell from '../workspace/NotificationBell';
 
 export const SuperAdminTopNavbar = ({ toggleSidebar }) => {

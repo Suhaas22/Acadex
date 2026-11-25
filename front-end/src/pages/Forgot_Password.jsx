@@ -16,7 +16,10 @@ import {
   Send,
 } from 'lucide-react';
 import { useAppDispatch } from '../store/hooks';
-import { requestPasswordReset, resetPassword } from '../store/slices/authSlice';
+import {
+  requestPasswordReset,
+  resetPassword,
+} from '../store/actions/authActions';
 import { Brand, LearningVisual } from '../components/brand/Brand';
 
 export default function ForgotPassword() {

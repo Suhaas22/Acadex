@@ -8,7 +8,7 @@ import {
   markWorkspaceNotificationRead,
   markAllWorkspaceNotificationsRead,
   dismissWorkspaceNotification,
-} from '../../store/slices/notificationsSlice';
+} from '../../store/actions/notificationsActions';
 
 export function useInbox() {
   const dispatch = useAppDispatch();

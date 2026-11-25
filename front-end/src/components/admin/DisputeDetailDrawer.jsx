@@ -13,8 +13,8 @@ import {
   addAdminDisputeComment,
   clearDisputeError,
   transitionDispute,
-} from '../../store/slices/disputesSlice';
-import { fetchWorkspaceNotifications } from '../../store/slices/notificationsSlice';
+} from '../../store/actions/disputesActions';
+import { fetchWorkspaceNotifications } from '../../store/actions/notificationsActions';
 import { StatusBadge } from './StatusBadge';
 import { dateLabel } from '../../utils/adminDisplay';
 export const DisputeDetailDrawer = ({ dispute, onClose, onUpdated }) => {

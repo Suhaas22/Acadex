@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import OrgLayout from '../../components/organization/OrgLayout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchOrgLearners } from '../../store/slices/learnersSlice';
+import { fetchOrgLearners } from '../../store/actions/learnersActions';
 import {
   AdminHeader,
   AdminSearch,

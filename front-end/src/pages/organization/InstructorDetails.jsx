@@ -7,7 +7,7 @@ import {
   clearSelectedInstructor,
   fetchOrgInstructorById,
   updateInstructorStatus,
-} from '../../store/slices/instructorsSlice';
+} from '../../store/actions/instructorsActions';
 import {
   AdminHeader,
   AdminDataState,

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, ArrowUpRight, Users, Award, Layers } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchWorkspaceOverview } from '../../store/slices/analyticsSlice';
+import { fetchWorkspaceOverview } from '../../store/actions/analyticsActions';
 import {
   AdminHeader,
   AdminMetric,

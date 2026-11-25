@@ -12,8 +12,8 @@ import {
 } from 'lucide-react';
 import { Sidebar } from './Sidebar';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { clearSession } from '../../store/slices/authSlice';
-import { fetchAdminSession } from '../../store/slices/usersSlice';
+import { clearSession } from '../../store/actions/authActions';
+import { fetchAdminSession } from '../../store/actions/usersActions';
 import '../../styles/admin-panels.css';
 class AdminBoundary extends Component {
   state = { failed: false };

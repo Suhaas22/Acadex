@@ -25,15 +25,15 @@ import {
 } from 'lucide-react';
 import PageLayout from '../../components/layout/PageLayout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { showToast } from '../../store/slices/toastSlice';
-import { fetchStudentProfile } from '../../store/slices/learnersSlice';
-import { fetchStudentEnrollments } from '../../store/slices/enrollmentsSlice';
+import { showToast } from '../../store/actions/toastActions';
+import { fetchStudentProfile } from '../../store/actions/learnersActions';
+import { fetchStudentEnrollments } from '../../store/actions/enrollmentsActions';
 import {
   createReview,
   deleteReview,
   fetchMyReviews,
   updateReview,
-} from '../../store/slices/reviewsSlice';
+} from '../../store/actions/reviewsActions';
 
 function StarRating({ value, size = 'w-4 h-4', onPick, interactive = false }) {
   const [hoverRating, setHoverRating] = useState(0);

@@ -5,12 +5,12 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ChevronLeft, Save, GraduationCap, Check } from 'lucide-react';
 import OrgLayout from '../../components/organization/OrgLayout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { showToast } from '../../store/slices/toastSlice';
+import { showToast } from '../../store/actions/toastActions';
 import {
   fetchOrgCourseById,
   updateCourse,
-} from '../../store/slices/coursesSlice';
-import { fetchInstructors } from '../../store/slices/instructorsSlice';
+} from '../../store/actions/coursesActions';
+import { fetchInstructors } from '../../store/actions/instructorsActions';
 import { AdminDataState, AdminEmpty } from '../../components/admin/AdminUI';
 
 export default function EditCourse() {

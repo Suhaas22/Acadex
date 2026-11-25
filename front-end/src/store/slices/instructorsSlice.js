@@ -1,91 +1,14 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { api } from '../../services/api';
-import { storeSession, clearSession } from './authSlice';
+import { createSlice } from '@reduxjs/toolkit';
+import { clearSession } from '../actions/authActions';
 import {
-  bindResourceLifecycle,
-  createResourceState,
-  extractItems,
-} from '../utils';
-
-export const fetchInstructorWorkspace = createAsyncThunk(
-  'instructors/fetchWorkspace',
-  async (_, { dispatch, rejectWithValue }) => {
-    try {
-      const workspace = await api.get('/workspace/instructor');
-      if (workspace?.instructor?.id) {
-        dispatch(
-          storeSession({ nexuspay_instructor_id: workspace.instructor.id })
-        );
-      }
-      return workspace;
-    } catch (err) {
-      return rejectWithValue(
-        err.message || 'No instructor profile is linked to this account'
-      );
-    }
-  }
-);
-
-export const fetchInstructors = createAsyncThunk(
-  'instructors/fetchAll',
-  async (params = { limit: 1000 }, { rejectWithValue }) => {
-    try {
-      return extractItems(await api.instructors.list(params));
-    } catch (err) {
-      return rejectWithValue(err.message || 'Unable to load instructors.');
-    }
-  }
-);
-
-export const fetchOrgInstructorById = createAsyncThunk(
-  'instructors/fetchOrgInstructorById',
-  async (id, { rejectWithValue }) => {
-    try {
-      return await api.get(
-        `/workspace/organization/instructors/${encodeURIComponent(id)}`
-      );
-    } catch (err) {
-      return rejectWithValue(
-        err.message || 'Unable to load instructor details.'
-      );
-    }
-  }
-);
-
-export const updateInstructorStatus = createAsyncThunk(
-  'instructors/updateStatus',
-  async ({ id, status }, { rejectWithValue }) => {
-    try {
-      const updated = await api.patch(
-        `/instructors/${encodeURIComponent(id)}`,
-        {
-          status,
-        }
-      );
-      const detail = await api.get(
-        `/workspace/organization/instructors/${encodeURIComponent(id)}`
-      );
-      return { updated, detail };
-    } catch (err) {
-      return rejectWithValue(
-        err.message || 'Unable to update instructor status.'
-      );
-    }
-  }
-);
-
-export const leaveOrganization = createAsyncThunk(
-  'instructors/leaveOrganization',
-  async (instructorId, { dispatch, rejectWithValue }) => {
-    try {
-      const res = await api.instructors.leaveOrganization(instructorId);
-      await dispatch(fetchInstructorWorkspace());
-      return res;
-    } catch (err) {
-      return rejectWithValue(err.message || 'Unable to leave organization.');
-    }
-  }
-);
+  clearSelectedInstructor,
+  fetchInstructors,
+  fetchInstructorWorkspace,
+  fetchOrgInstructorById,
+  leaveOrganization,
+  updateInstructorStatus,
+} from '../actions/instructorsActions';
+import { bindResourceLifecycle, createResourceState } from '../utils';
 
 const initialState = {
   workspace: createResourceState(null),
@@ -98,12 +21,7 @@ const initialState = {
 const instructorsSlice = createSlice({
   name: 'instructors',
   initialState,
-  reducers: {
-    clearSelectedInstructor: (state) => {
-      state.selected = createResourceState(null);
-      state.actionError = '';
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     bindResourceLifecycle(
       builder,
@@ -116,6 +34,10 @@ const instructorsSlice = createSlice({
     });
 
     builder
+      .addCase(clearSelectedInstructor, (state) => {
+        state.selected = createResourceState(null);
+        state.actionError = '';
+      })
       .addCase(updateInstructorStatus.pending, (state) => {
         state.actionLoading = true;
         state.actionError = '';
@@ -150,7 +72,5 @@ const instructorsSlice = createSlice({
       .addCase(clearSession, () => initialState);
   },
 });
-
-export const { clearSelectedInstructor } = instructorsSlice.actions;
 
 export default instructorsSlice.reducer;

@@ -11,7 +11,7 @@ import {
   Star,
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { fetchInstructorWorkspace } from '../../../store/slices/instructorsSlice';
+import { fetchInstructorWorkspace } from '../../../store/actions/instructorsActions';
 import {
   AdminHeader,
   AdminMetric,

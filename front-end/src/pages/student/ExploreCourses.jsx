@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import StudentPage from '../../components/student/StudentPage';
 import CourseCard from '../../components/student/CourseCard';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { browseStudentCatalog } from '../../store/slices/coursesSlice';
+import { browseStudentCatalog } from '../../store/actions/coursesActions';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import {
   AdminHeader,

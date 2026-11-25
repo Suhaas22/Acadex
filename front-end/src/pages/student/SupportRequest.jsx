@@ -8,9 +8,9 @@ import {
   clearDisputeError,
   createStudentDispute,
   fetchStudentDisputeCategories,
-} from '../../store/slices/disputesSlice';
-import { fetchStudentEnrollments } from '../../store/slices/enrollmentsSlice';
-import { fetchWorkspaceNotifications } from '../../store/slices/notificationsSlice';
+} from '../../store/actions/disputesActions';
+import { fetchStudentEnrollments } from '../../store/actions/enrollmentsActions';
+import { fetchWorkspaceNotifications } from '../../store/actions/notificationsActions';
 import { AdminHeader, AdminDataState } from '../../components/admin/AdminUI';
 export default function SupportRequest() {
   const dispatch = useAppDispatch();

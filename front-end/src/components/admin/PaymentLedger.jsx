@@ -15,8 +15,8 @@ import {
   fetchAdminFinance,
   fetchAdminPayments,
   recordAdminPayout,
-} from '../../store/slices/paymentsSlice';
-import { fetchWorkspaceNotifications } from '../../store/slices/notificationsSlice';
+} from '../../store/actions/paymentsActions';
+import { fetchWorkspaceNotifications } from '../../store/actions/notificationsActions';
 import { money, timestampLabel } from '../../utils/adminDisplay';
 import {
   AdminHeader,

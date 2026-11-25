@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import OrgLayout from '../../components/organization/OrgLayout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchOrgAnalytics } from '../../store/slices/analyticsSlice';
+import { fetchOrgAnalytics } from '../../store/actions/analyticsActions';
 import {
   AdminHeader,
   AdminMetric,

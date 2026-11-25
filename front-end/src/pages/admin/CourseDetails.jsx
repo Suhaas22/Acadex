@@ -15,7 +15,7 @@ import {
   ArrowUpRight,
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchAdminCourseById } from '../../store/slices/coursesSlice';
+import { fetchAdminCourseById } from '../../store/actions/coursesActions';
 import {
   AdminHeader,
   AdminMetric,

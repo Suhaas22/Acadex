@@ -8,8 +8,8 @@ import {
   assignCourseInstructors,
   clearCourseErrors,
   fetchAssignmentOptions,
-} from '../../store/slices/coursesSlice';
-import { fetchWorkspaceNotifications } from '../../store/slices/notificationsSlice';
+} from '../../store/actions/coursesActions';
+import { fetchWorkspaceNotifications } from '../../store/actions/notificationsActions';
 import {
   AdminHeader,
   AdminDataState,

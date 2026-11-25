@@ -23,7 +23,7 @@ import {
   fetchInstructorNotifications,
   markAllInstructorNotificationsRead,
   markInstructorNotificationRead,
-} from '../../../store/slices/notificationsSlice';
+} from '../../../store/actions/notificationsActions';
 
 const TABS = [
   { value: 'all', label: 'All', category: null },

@@ -8,7 +8,7 @@ import {
   Badge,
 } from '../../../components/common';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { showToast } from '../../../store/slices/toastSlice';
+import { showToast } from '../../../store/actions/toastActions';
 import {
   addQuestion,
   createEmptyOption,
@@ -22,7 +22,7 @@ import {
   setQuizTitle,
   setShowExplanations,
   updateQuestion,
-} from '../../../store/slices/quizzesSlice';
+} from '../../../store/actions/quizzesActions';
 import {
   Plus,
   Trash2,

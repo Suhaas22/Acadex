@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { BookOpen, Plus, ArrowUpRight, Clock3 } from 'lucide-react';
 import OrgLayout from '../../components/organization/OrgLayout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchOrgCourses } from '../../store/slices/coursesSlice';
+import { fetchOrgCourses } from '../../store/actions/coursesActions';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import {
   AdminHeader,

@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   clearDownloadError,
   downloadCertificatePdf,
-} from '../../store/slices/certificatesSlice';
+} from '../../store/actions/certificatesActions';
 export default function CertificateModal({
   certificate: provided,
   cert,

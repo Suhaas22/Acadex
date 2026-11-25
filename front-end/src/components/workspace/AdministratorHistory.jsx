@@ -10,7 +10,7 @@ import {
   fetchAdminHistory,
   fetchHistoryAdminOptions,
   fetchHistoryCourseOptions,
-} from '../../store/slices/analyticsSlice';
+} from '../../store/actions/analyticsActions';
 import {
   AdminHeader,
   AdminSearch,

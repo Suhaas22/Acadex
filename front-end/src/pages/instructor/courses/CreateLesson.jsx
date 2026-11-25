@@ -4,7 +4,7 @@ import { PlayCircle, FileText, UploadCloud, Paperclip } from 'lucide-react';
 import { useState, useRef } from 'react';
 import { cn } from '../../../utils/cn';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { createLessonAndSaveDraft } from '../../../store/slices/curriculumSlice';
+import { createLessonAndSaveDraft } from '../../../store/actions/curriculumActions';
 
 export function CreateLesson() {
   const dispatch = useAppDispatch();

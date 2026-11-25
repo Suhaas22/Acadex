@@ -16,8 +16,8 @@ import {
   downloadCertificatePdf,
   fetchStudentCertificates,
   setSelectedCertificate,
-} from '../../store/slices/certificatesSlice';
-import { fetchStudentEnrollments } from '../../store/slices/enrollmentsSlice';
+} from '../../store/actions/certificatesActions';
+import { fetchStudentEnrollments } from '../../store/actions/enrollmentsActions';
 
 export default function Certificates() {
   const dispatch = useAppDispatch();

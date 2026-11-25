@@ -5,7 +5,7 @@ import { store } from './store';
 import { registerStoreListeners } from './store/listeners';
 import { attachStore } from './services/api';
 import { BrowserRouter, useLocation } from 'react-router-dom';
-import { syncAuth } from './store/slices/authSlice';
+import { syncAuth } from './store/actions/authActions';
 import App from './App.jsx';
 import { ToastContainer } from './components/common/Toast.jsx';
 import './index.css';

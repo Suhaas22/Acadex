@@ -16,10 +16,10 @@ import {
 import PageLayout from '../../components/layout/PageLayout';
 import { LinearProgressBar } from '../../components/common/ProgressBar';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchStudentProfile } from '../../store/slices/learnersSlice';
-import { fetchStudentEnrollments } from '../../store/slices/enrollmentsSlice';
-import { createReview } from '../../store/slices/reviewsSlice';
-import { showToast } from '../../store/slices/toastSlice';
+import { fetchStudentProfile } from '../../store/actions/learnersActions';
+import { fetchStudentEnrollments } from '../../store/actions/enrollmentsActions';
+import { createReview } from '../../store/actions/reviewsActions';
+import { showToast } from '../../store/actions/toastActions';
 
 const TABS = [
   { id: 'active', label: 'Active' },

@@ -6,7 +6,7 @@ import {
   fetchAllCertificates,
   fetchCertificateById,
   setSelectedCertificate,
-} from '../../store/slices/certificatesSlice';
+} from '../../store/actions/certificatesActions';
 import {
   AdminHeader,
   AdminSearch,

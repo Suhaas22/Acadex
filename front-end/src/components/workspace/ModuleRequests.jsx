@@ -5,8 +5,8 @@ import {
   fetchModuleRequests,
   decideModuleRequest,
   clearCurriculumNotices,
-} from '../../store/slices/curriculumSlice';
-import { fetchOrgCourseById } from '../../store/slices/coursesSlice';
+} from '../../store/actions/curriculumActions';
+import { fetchOrgCourseById } from '../../store/actions/coursesActions';
 import { AdminHeader, AdminDataState, AdminEmpty } from '../admin/AdminUI';
 import { StatusBadge } from '../admin/StatusBadge';
 import { dateLabel } from '../../utils/adminDisplay';

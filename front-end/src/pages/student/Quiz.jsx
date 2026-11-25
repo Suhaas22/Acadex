@@ -7,7 +7,7 @@ import {
   fetchStudentAssessment,
   setStudentAnswer,
   submitStudentAssessment,
-} from '../../store/slices/quizzesSlice';
+} from '../../store/actions/quizzesActions';
 import {
   AdminHeader,
   AdminDataState,

@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import StudentPage from '../../components/student/StudentPage';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchStudentDisputes } from '../../store/slices/disputesSlice';
+import { fetchStudentDisputes } from '../../store/actions/disputesActions';
 import {
   AdminHeader,
   AdminMetric,

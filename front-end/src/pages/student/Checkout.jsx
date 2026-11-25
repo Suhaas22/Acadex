@@ -3,13 +3,13 @@ import { useNavigate, useSearchParams, Link, Navigate } from 'react-router-dom';
 import { CreditCard, Lock, ChevronRight, Smartphone } from 'lucide-react';
 import PageLayout from '../../components/layout/PageLayout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { showToast } from '../../store/slices/toastSlice';
-import { fetchStudentCatalogCourse } from '../../store/slices/coursesSlice';
-import { fetchStudentEnrollments } from '../../store/slices/enrollmentsSlice';
+import { showToast } from '../../store/actions/toastActions';
+import { fetchStudentCatalogCourse } from '../../store/actions/coursesActions';
+import { fetchStudentEnrollments } from '../../store/actions/enrollmentsActions';
 import {
   checkoutCourse,
   resetCheckout,
-} from '../../store/slices/paymentsSlice';
+} from '../../store/actions/paymentsActions';
 
 const UPI_PATTERN = /^[\w.-]{2,}@[a-zA-Z]{2,}$/;
 

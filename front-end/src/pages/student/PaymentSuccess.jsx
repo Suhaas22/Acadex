@@ -3,7 +3,7 @@ import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { CheckCircle2, Receipt, BookOpen } from 'lucide-react';
 import StudentPage from '../../components/student/StudentPage';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchStudentPaymentById } from '../../store/slices/paymentsSlice';
+import { fetchStudentPaymentById } from '../../store/actions/paymentsActions';
 import { AdminDataState, AdminEmpty } from '../../components/admin/AdminUI';
 import { money, dateLabel } from '../../utils/adminDisplay';
 export default function PaymentSuccess() {

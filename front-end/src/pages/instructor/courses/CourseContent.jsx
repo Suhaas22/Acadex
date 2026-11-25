@@ -22,7 +22,7 @@ import {
   submitModuleRequest,
   updateModule as updateCurriculumModule,
   uploadLessonMedia,
-} from '../../../store/slices/curriculumSlice';
+} from '../../../store/actions/curriculumActions';
 import {
   ChevronDown,
   ChevronRight,

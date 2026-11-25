@@ -1,5 +1,5 @@
 import { useAppDispatch } from '../store/hooks';
-import { storeSession, register } from '../store/slices/authSlice';
+import { storeSession, register } from '../store/actions/authActions';
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {

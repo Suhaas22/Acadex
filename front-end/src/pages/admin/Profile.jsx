@@ -5,7 +5,7 @@ import {
   clearUsersActionError,
   fetchAdminSession,
   updateAdminProfile,
-} from '../../store/slices/usersSlice';
+} from '../../store/actions/usersActions';
 import {
   AdminDataState,
   AdminHeader,

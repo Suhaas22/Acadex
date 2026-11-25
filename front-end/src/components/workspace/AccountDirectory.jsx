@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Users, Building2, ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchAccounts } from '../../store/slices/usersSlice';
+import { fetchAccounts } from '../../store/actions/usersActions';
 import {
   AdminHeader,
   AdminSearch,

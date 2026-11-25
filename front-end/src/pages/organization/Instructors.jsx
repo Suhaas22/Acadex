@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, Plus, BookOpen, Users } from 'lucide-react';
 import OrgLayout from '../../components/organization/OrgLayout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchTeachingAssignments } from '../../store/slices/instructorRequestsSlice';
+import { fetchTeachingAssignments } from '../../store/actions/instructorRequestsActions';
 import {
   AdminHeader,
   AdminSearch,

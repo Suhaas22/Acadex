@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, Receipt } from 'lucide-react';
 import StudentPage from '../../components/student/StudentPage';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchStudentPaymentById } from '../../store/slices/paymentsSlice';
+import { fetchStudentPaymentById } from '../../store/actions/paymentsActions';
 import { AdminHeader, AdminDataState } from '../../components/admin/AdminUI';
 import { StatusBadge } from '../../components/admin/StatusBadge';
 import { money, dateLabel } from '../../utils/adminDisplay';

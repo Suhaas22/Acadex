@@ -22,7 +22,7 @@ import {
   CreditCard,
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchAdminOverview } from '../../store/slices/analyticsSlice';
+import { fetchAdminOverview } from '../../store/actions/analyticsActions';
 import {
   AdminHeader,
   AdminMetric,

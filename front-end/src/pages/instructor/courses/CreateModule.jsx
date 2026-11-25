@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Card, CardContent, Button, Input } from '../../../components/common';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { createModuleAndSaveDraft } from '../../../store/slices/curriculumSlice';
+import { createModuleAndSaveDraft } from '../../../store/actions/curriculumActions';
 
 export function CreateModule() {
   const dispatch = useAppDispatch();

@@ -1,4 +1,4 @@
-import { syncAuth } from './slices/authSlice';
+import { syncAuth } from './actions/authActions';
 
 const authSyncEvents = ['focus', 'storage'];
 

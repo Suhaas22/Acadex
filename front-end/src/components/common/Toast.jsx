@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckCircle2, AlertCircle, Info, X } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { removed } from '../../store/slices/toastSlice';
+import { removed } from '../../store/actions/toastActions';
 
 export function ToastContainer() {
   const toasts = useAppSelector((state) => state.toast);

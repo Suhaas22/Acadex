@@ -1,11 +1,11 @@
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { clearSession } from '../../../store/slices/authSlice';
-import { fetchInstructorWorkspace } from '../../../store/slices/instructorsSlice';
+import { clearSession } from '../../../store/actions/authActions';
+import { fetchInstructorWorkspace } from '../../../store/actions/instructorsActions';
 import {
   fetchMyInvitations,
   fetchMyJoinRequests,
-} from '../../../store/slices/instructorRequestsSlice';
-import { fetchInstructorUnreadCount } from '../../../store/slices/notificationsSlice';
+} from '../../../store/actions/instructorRequestsActions';
+import { fetchInstructorUnreadCount } from '../../../store/actions/notificationsActions';
 import NotificationBell from '../../workspace/NotificationBell';
 import React, { useState, useRef, useEffect } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';

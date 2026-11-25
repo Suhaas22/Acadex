@@ -21,22 +21,22 @@ import {
 } from 'lucide-react';
 import PageLayout from '../../components/layout/PageLayout';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { showToast } from '../../store/slices/toastSlice';
+import { showToast } from '../../store/actions/toastActions';
 import {
   clearSelectedCatalogCourse,
   fetchStudentCatalogCourse,
-} from '../../store/slices/coursesSlice';
+} from '../../store/actions/coursesActions';
 import {
   enrollFreeCourse,
   fetchStudentEnrollments,
-} from '../../store/slices/enrollmentsSlice';
-import { fetchStudentProfile } from '../../store/slices/learnersSlice';
+} from '../../store/actions/enrollmentsActions';
+import { fetchStudentProfile } from '../../store/actions/learnersActions';
 import {
   createReview,
   deleteReview as deleteCourseReview,
   fetchCourseReviews,
   updateReview,
-} from '../../store/slices/reviewsSlice';
+} from '../../store/actions/reviewsActions';
 import HumanAvatar from '../../components/common/HumanAvatar';
 
 function Stars({ value, size = 'w-3 h-3', onPick }) {

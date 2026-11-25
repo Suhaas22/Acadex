@@ -14,10 +14,8 @@ import {
   Copy,
 } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import {
-  respondInvitation,
-  selectPendingOrgInvitations,
-} from '../../../store/slices/instructorRequestsSlice';
+import { respondInvitation } from '../../../store/actions/instructorRequestsActions';
+import { selectPendingOrgInvitations } from '../../../store/slices/instructorRequestsSlice';
 
 const isPending = (s) => /pending|sent/i.test(s || '');
 const fmt = (d) => (d ? dateLabel(d) : '');

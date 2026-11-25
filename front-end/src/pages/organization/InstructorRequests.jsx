@@ -9,8 +9,8 @@ import {
   fetchTeachingAssignments,
   lookupInstructorByEmail,
   sendInvitation,
-} from '../../store/slices/instructorRequestsSlice';
-import { fetchWorkspaceNotifications } from '../../store/slices/notificationsSlice';
+} from '../../store/actions/instructorRequestsActions';
+import { fetchWorkspaceNotifications } from '../../store/actions/notificationsActions';
 import {
   AdminHeader,
   AdminSearch,
