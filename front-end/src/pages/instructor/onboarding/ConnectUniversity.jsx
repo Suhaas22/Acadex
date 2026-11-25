@@ -13,7 +13,11 @@ import {
   History,
   Copy,
 } from 'lucide-react';
-import { useInstructor } from '../../../hooks/useInstructor';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import {
+  respondInvitation,
+  selectPendingOrgInvitations,
+} from '../../../store/slices/instructorRequestsSlice';
 
 const isPending = (s) => /pending|sent/i.test(s || '');
 const fmt = (d) => (d ? dateLabel(d) : '');
@@ -34,15 +38,18 @@ function StatusPill({ status }) {
 }
 
 export function ConnectUniversity({ embedded = false }) {
-  const {
-    instructor,
-    isAffiliated,
-    invitations = [],
-    pendingOrgInvitations = [],
-    actionLoading,
-    acceptOrgInvitation,
-    declineOrgInvitation,
-  } = useInstructor();
+  const dispatch = useAppDispatch();
+  const instructor = useAppSelector(
+    (s) => s.instructors.workspace.data?.instructor
+  );
+  const isAffiliated =
+    Boolean(instructor?.organizationId) && instructor?.status === 'Active';
+  const invitations =
+    useAppSelector((s) => s.instructorRequests.invitations.data) || [];
+  const pendingOrgInvitations = useAppSelector(selectPendingOrgInvitations);
+  const actionLoading = useAppSelector(
+    (s) => s.instructorRequests.actionLoading
+  );
 
   const [notice, setNotice] = useState(null);
   const [confirmDecline, setConfirmDecline] = useState(null);
@@ -54,7 +61,12 @@ export function ConnectUniversity({ embedded = false }) {
       await fn();
       setNotice({ type: 'success', text: success });
     } catch (err) {
-      setNotice({ type: 'error', text: err.message || 'Something went wrong' });
+      setNotice({
+        type: 'error',
+        text:
+          (typeof err === 'string' ? err : err?.message) ||
+          'Something went wrong',
+      });
     }
   };
 
@@ -235,7 +247,14 @@ export function ConnectUniversity({ embedded = false }) {
                         onClick={() => {
                           setConfirmDecline(null);
                           act(
-                            () => declineOrgInvitation(inv.id),
+                            () =>
+                              dispatch(
+                                respondInvitation({
+                                  id: inv.id,
+                                  decision: 'Declined',
+                                  instructorId: instructor?.id,
+                                })
+                              ).unwrap(),
                             'Faculty invitation declined.'
                           );
                         }}
@@ -260,8 +279,15 @@ export function ConnectUniversity({ embedded = false }) {
                       disabled={actionLoading}
                       onClick={() =>
                         act(
-                          () => acceptOrgInvitation(inv.id),
-                          `You joined ${inv.organizationName}! Your faculty tools and courses are now unlocked.`,
+                          () =>
+                            dispatch(
+                              respondInvitation({
+                                id: inv.id,
+                                decision: 'Accepted',
+                                instructorId: instructor?.id,
+                              })
+                            ).unwrap(),
+                          `You joined ${inv.organizationName}! Your faculty tools and courses are now unlocked.`
                         )
                       }
                       className="px-5 py-2 rounded-xl bg-[#0056D2] hover:bg-[#00419E] text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition-colors"

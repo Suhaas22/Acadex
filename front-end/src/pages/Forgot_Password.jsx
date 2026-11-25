@@ -57,7 +57,9 @@ export default function ForgotPassword() {
     setError('');
 
     try {
-      const result = await dispatch(requestPasswordReset(email.trim()));
+      const result = await dispatch(
+        requestPasswordReset(email.trim())
+      ).unwrap();
       setLoading(false);
       setStep(2);
       setSuccessMsg(
@@ -114,7 +116,13 @@ export default function ForgotPassword() {
     setError('');
 
     try {
-      const result = await dispatch(resetPassword(email.trim(), otp.join(''), newPassword));
+      const result = await dispatch(
+        resetPassword({
+          email: email.trim(),
+          code: otp.join(''),
+          password: newPassword,
+        })
+      ).unwrap();
       setLoading(false);
       setStep(4);
       setSuccessMsg(
@@ -228,10 +236,7 @@ export default function ForgotPassword() {
 
           {/* STEP 1: EMAIL ENTRY */}
           {step === 1 && (
-            <form
-              onSubmit={handleSendOtp}
-              className="space-y-4"
-            >
+            <form onSubmit={handleSendOtp} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
                   Registered Email Address
@@ -282,10 +287,7 @@ export default function ForgotPassword() {
 
           {/* STEP 2: OTP VERIFICATION */}
           {step === 2 && (
-            <form
-              onSubmit={handleVerifyOtp}
-              className="space-y-6"
-            >
+            <form onSubmit={handleVerifyOtp} className="space-y-6">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 text-center mb-3">
                   Enter 6-Digit Code
@@ -343,10 +345,7 @@ export default function ForgotPassword() {
 
           {/* STEP 3: SET NEW PASSWORD */}
           {step === 3 && (
-            <form
-              onSubmit={handleResetPassword}
-              className="space-y-4"
-            >
+            <form onSubmit={handleResetPassword} className="space-y-4">
               {/* New Password */}
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
