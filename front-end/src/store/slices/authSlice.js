@@ -170,6 +170,13 @@ export const syncAuth = () => (dispatch) =>
 export const storeSession = (values, emptyNullish = false) =>
   sessionStored({ values, emptyNullish });
 
-export const clearSession = (keys = STORAGE_KEYS) => sessionCleared(keys);
+export const clearSession = Object.assign(
+  (keys = STORAGE_KEYS) => sessionCleared(keys),
+  {
+    type: sessionCleared.type,
+    toString: sessionCleared.toString,
+    match: sessionCleared.match,
+  }
+);
 
 export default authSlice.reducer;
